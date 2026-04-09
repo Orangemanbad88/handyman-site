@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] Handyman Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ec;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --muted: #6b6b65;
+    --accent: #c84b00;
+    --accent-light: #fceee6;
+    --border: #ddd9d0;
+    --nav-h: 72px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--text);
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ccc;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--text);
+    color: #fff;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 60px solid rgba(200,75,0,0.12);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #bbb;
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    width: auto;
+  }
+
+  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff;
+    margin-left: 0.75rem;
+  }
+
+  .btn-outline:hover { border-color: #fff; opacity: 1; }
+
+  /* ── SERVICES PAGE ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 1.75rem;
+    transition: background 0.15s;
+  }
+
+  .service-card:hover { background: var(--accent-light); }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-light);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .service-note {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  /* ── WORK REQUEST PAGE ── */
+  .request-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .submit-row {
+    margin-top: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .submit-row .btn { padding: 0.9rem 2.5rem; font-size: 0.9rem; }
+
+  #form-success {
+    display: none;
+    background: #edf7ed;
+    border: 1px solid #a8d5a8;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: #2d6a2d;
+    margin-top: 1.25rem;
+  }
+
+  /* ── CONTACT PAGE ── */
+  .contact-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .contact-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+  }
+
+  .contact-block.full { grid-column: 1 / -1; }
+
+  .contact-block h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-block p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-block a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  .contact-block a:hover { text-decoration: underline; }
+
+  .contact-block .note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .hours-table {
+    width: 100%;
+    font-size: 0.9rem;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr { border-bottom: 1px solid var(--border); }
+  .hours-table tr:last-child { border-bottom: none; }
+
+  .hours-table td {
+    padding: 0.55rem 0;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .hours-table td:last-child { text-align: right; color: var(--muted); }
+
+  .service-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: #888;
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-block.full { grid-column: auto; }
+    .btn-outline { display: none; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .section, .request-wrap, .contact-wrap { padding: 2.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#" onclick="showPage('services'); return false;">[Your Name]</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('services'); return false;" id="nav-services" class="active">Services</a></li>
+    <li><a href="#" onclick="showPage('request'); return false;" id="nav-request">Request Work</a></li>
+    <li><a href="#" onclick="showPage('contact'); return false;" id="nav-contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════ SERVICES PAGE ══════════════════ -->
+<div class="page active" id="page-services">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Licensed &amp; Insured · [City, State]</p>
+      <h1>Quality Work,<br>Done Right.</h1>
+      <p>No job too small. From quick fixes to weekend projects — [Your Name] gets it done on time and on budget.</p>
+      <a href="#" class="btn" onclick="showPage('request'); return false;">Get a Quote</a>
+      <a href="#" class="btn btn-outline" onclick="showPage('contact'); return false;">Call Us</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">What we do</p>
+    <h2>Services Offered</h2>
+    <p class="section-sub">Replace this list with your actual services. Each card supports a title and short description.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>General Repairs</h3>
+        <p>Drywall patching, door &amp; window adjustments, weatherstripping, and everyday fixes around the house.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <h3>Plumbing</h3>
+        <p>Faucet and toilet repairs, fixture installation, leak fixes, and minor pipe work.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>Electrical</h3>
+        <p>Outlet and switch replacements, ceiling fan installation, light fixture swaps. No panel work.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🪟</div>
+        <h3>Carpentry</h3>
+        <p>Trim and molding, shelving, cabinet repairs, deck boards, and custom woodwork.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Painting &amp; Finishing</h3>
+        <p>Interior painting, touch-ups, caulking, and surface prep for any room.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Exterior &amp; Seasonal</h3>
+        <p>Gutter cleaning, power washing, fence repairs, caulking, and pre-season prep.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Assembly</h3>
+        <p>Furniture assembly, TV mounting, curtain rods, shelving, and anything flat-packed.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔨</div>
+        <h3>Add Your Service</h3>
+        <p>Replace this card with another service you offer. Add as many as needed.</p>
+      </div>
+
+    </div>
+
+    <p class="service-note">
+      Don't see what you need? <a href="#" onclick="showPage('request'); return false;" style="color: var(--accent); font-weight: 500;">Describe your project</a> and we'll let you know if we can help.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════ REQUEST WORK PAGE ══════════════════ -->
+<div class="page" id="page-request">
+
+  <div class="request-wrap">
+    <p class="section-label">Get started</p>
+    <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 0.02em; margin-bottom: 0.4rem;">Describe Your Project</h2>
+    <p style="color: var(--muted); font-weight: 300; margin-bottom: 2rem;">Fill out the form below and we'll get back to you within [X] hours with availability and a quote.</p>
+
+    <div class="form-card">
+      <div class="field-row">
+        <div class="field">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="Jane">
+        </div>
+        <div class="field">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Smith">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jane@example.com">
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="(555) 000-0000">
+      </div>
+
+      <div class="field">
+        <label for="address">Property Address</label>
+        <input type="text" id="address" placeholder="123 Main St, City, FL">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="service-type">Service Category</label>
+          <select id="service-type">
+            <option value="">— Select —</option>
+            <option>General Repairs</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>Carpentry</option>
+            <option>Painting &amp; Finishing</option>
+            <option>Exterior &amp; Seasonal</option>
+            <option>Assembly</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="timeline">Preferred Date</label>
+          <input type="date" id="timeline">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="description">Describe the Work Needed</label>
+        <textarea id="description" placeholder="Tell us what's going on. The more detail, the better — include any relevant measurements, photos if you have them, and how urgent this is."></textarea>
+        <p class="form-note">Be as specific as possible. This helps us give you an accurate quote.</p>
+      </div>
+
+      <div class="field">
+        <label for="hear">How did you hear about us?</label>
+        <select id="hear">
+          <option value="">— Select —</option>
+          <option>Google</option>
+          <option>Facebook / Instagram</option>
+          <option>Nextdoor</option>
+          <option>Friend or neighbor referral</option>
+          <option>Returning customer</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="submit-row">
+        <button class="btn" onclick="submitForm()">Submit Request</button>
+        <span style="font-size: 0.82rem; color: var(--muted);">We'll reply within [X] hours.</span>
+      </div>
+
+      <div id="form-success">
+        ✓ Thanks! Your request has been submitted. We'll be in touch shortly.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CONTACT PAGE ══════════════════ -->
+<div class="page" id="page-contact">
+
+  <div class="contact-wrap">
+    <p class="section-label">Get in touch</p>
+    <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 0.02em; margin-bottom: 0.4rem;">Contact Us</h2>
+    <p style="color: var(--muted); font-weight: 300;">Ready to schedule or have a quick question? Reach out any of these ways.</p>
+
+    <div class="contact-grid">
+
+      <div class="contact-block">
+        <h3>Phone</h3>
+        <p><a href="tel:+10000000000">(000) 000-0000</a></p>
+        <p class="note">Best way to reach us for urgent jobs.</p>
+      </div>
+
+      <div class="contact-block">
+        <h3>Email</h3>
+        <p><a href="mailto:hello@yourbusiness.com">hello@yourbusiness.com</a></p>
+        <p class="note">We respond within [X] hours on business days.</p>
+      </div>
+
+      <div class="contact-block">
+        <h3>Business Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday – Friday</td><td>[8:00 AM – 6:00 PM]</td></tr>
+          <tr><td>Saturday</td><td>[9:00 AM – 4:00 PM]</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+
+      <div class="contact-block">
+        <h3>Service Area</h3>
+        <p style="font-size: 0.9rem; color: var(--muted); font-weight: 300; margin-bottom: 0.5rem;">We currently serve the following areas:</p>
+        <div class="service-area">
+          <span class="tag">[City 1]</span>
+          <span class="tag">[City 2]</span>
+          <span class="tag">[City 3]</span>
+          <span class="tag">[City 4]</span>
+          <span class="tag">[Surrounding Areas]</span>
+        </div>
+      </div>
+
+      <div class="contact-block full">
+        <h3>About [Your Name]</h3>
+        <p style="font-size: 1rem; font-weight: 300; line-height: 1.7;">[This is where a short bio or business description goes. A few sentences about who you are, how long you've been in business, your philosophy on quality work, and what makes you different from the other guys. Keep it friendly and genuine — people hire people they trust.]</p>
+        <p style="margin-top: 1rem; font-size: 0.88rem; color: var(--muted);">Licensed &amp; Insured · [License #XXXXX] · Serving [Region] since [Year]</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; <span id="yr"></span> <span>[Your Business Name]</span> · All rights reserved · [City, State]
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function submitForm() {
+    const required = ['fname','lname','email','phone','description'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#c84b00';
+        valid = false;
+      } else {
+        el.style.borderColor = '';
+      }
+    });
+    if (!valid) return;
+    document.getElementById('form-success').style.display = 'block';
+    document.querySelector('.submit-row .btn').disabled = true;
+    document.querySelector('.submit-row .btn').textContent = 'Submitted';
+    document.querySelector('.submit-row .btn').style.opacity = '0.5';
+  }
+</script>
+</body>
+</html>
