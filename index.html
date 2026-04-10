@@ -87,12 +87,12 @@
     color: var(--navy-deep);
     font-family: var(--slab);
     font-weight: 800;
-    width: 52px;
-    height: 52px;
-    font-size: 1.28rem;
+    width: 58px;
+    height: 58px;
+    font-size: 1.42rem;
     text-align: center;
-    border-radius: 8px;
-    margin-right: 0.7rem;
+    border-radius: 9px;
+    margin-right: 1rem;
     flex-shrink: 0;
     box-shadow: 0 2px 12px rgba(202,138,4,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   }
@@ -100,9 +100,9 @@
   .nav-brand .brand-text {
     display: inline-block;
     font-family: var(--slab);
-    font-size: 1.42rem;
+    font-size: 1.65rem;
     font-weight: 800;
-    line-height: 1.0;
+    line-height: 1.05;
     letter-spacing: -0.02em;
     text-shadow:
       0 0 18px rgba(234,179,8,0.4),
@@ -944,8 +944,8 @@
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 880px) {
     nav { padding: 0 1.25rem; }
-    .nav-brand .mark { width: 44px; height: 44px; font-size: 1.08rem; margin-right: 0.55rem; }
-    .nav-brand .brand-text { font-size: 1.12rem; }
+    .nav-brand .mark { width: 50px; height: 50px; font-size: 1.22rem; margin-right: 0.8rem; }
+    .nav-brand .brand-text { font-size: 1.32rem; }
     .nav-links a { padding: 0.5rem 0.7rem; font-size: 0.72rem; }
     .nav-cta { padding: 0.55rem 0.95rem !important; font-size: 0.7rem !important; margin-left: 0.25rem; }
 
@@ -980,12 +980,12 @@
   }
 
   @media (max-width: 560px) {
-    nav { padding: 0 0.7rem; }
-    .nav-brand .mark { width: 36px; height: 36px; font-size: 0.9rem; margin-right: 0.4rem; border-radius: 7px; }
-    .nav-brand .brand-text { font-size: 0.86rem; }
-    .nav-links { gap: 0.05rem; }
-    .nav-links a { padding: 0.4rem 0.38rem; font-size: 0.56rem; letter-spacing: 0.03em; }
-    .nav-cta { padding: 0.45rem 0.55rem !important; font-size: 0.56rem !important; gap: 0.25rem; }
+    nav { padding: 0 0.85rem; }
+    .nav-brand .mark { width: 42px; height: 42px; font-size: 1.02rem; margin-right: 0.6rem; border-radius: 7px; }
+    .nav-brand .brand-text { font-size: 1.08rem; }
+    .nav-links { gap: 0.15rem; }
+    .nav-links a { padding: 0.5rem 0.6rem; font-size: 0.66rem; letter-spacing: 0.04em; }
+    .nav-cta { padding: 0.55rem 0.8rem !important; font-size: 0.66rem !important; gap: 0.3rem; }
   }
 
   @media (max-width: 360px) {
@@ -1007,7 +1007,6 @@
   </a>
   <ul class="nav-links">
     <li><a href="#" id="nav-contact" onclick="showPage('contact'); return false;">Contact</a></li>
-    <li><a href="#" id="nav-services" class="active" onclick="showPage('services'); return false;">Services</a></li>
     <li><a href="#" id="nav-request" class="nav-cta" onclick="showPage('request'); return false;">Get a Quote →</a></li>
   </ul>
 </nav>
