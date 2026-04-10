@@ -70,43 +70,43 @@
   }
 
   .nav-brand {
+    display: inline-flex;
+    align-items: center;
     font-family: var(--slab);
-    font-size: 1.4rem;
     font-weight: 800;
     color: #ffffff;
-    letter-spacing: -0.015em;
-    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-decoration: none;
   }
 
   .nav-brand .mark {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
     color: var(--navy-deep);
     font-family: var(--slab);
     font-weight: 800;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    font-size: 1rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
     text-align: center;
-    border-radius: 7px;
-    margin-right: 0.65rem;
-    vertical-align: middle;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 10px rgba(202,138,4,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+    border-radius: 8px;
+    margin-right: 0.7rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px rgba(202,138,4,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   }
 
-  .nav-brand small {
-    display: block;
-    margin-left: 49px;
-    margin-top: -1px;
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .nav-brand .brand-text {
+    display: inline-block;
+    font-family: var(--slab);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
   }
+
+  .nav-brand small { display: none; }
 
   .nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
 
@@ -940,9 +940,8 @@
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 880px) {
     nav { padding: 0 1.25rem; }
-    .nav-brand { font-size: 1.15rem; }
-    .nav-brand small { display: none; }
-    .nav-brand .mark { width: 32px; height: 32px; line-height: 32px; font-size: 0.88rem; margin-right: 0.55rem; }
+    .nav-brand .mark { width: 42px; height: 42px; font-size: 1.05rem; margin-right: 0.6rem; }
+    .nav-brand .brand-text { font-size: 1.1rem; }
     .nav-links a { padding: 0.5rem 0.7rem; font-size: 0.72rem; }
     .nav-cta { padding: 0.55rem 0.95rem !important; font-size: 0.7rem !important; margin-left: 0.25rem; }
 
@@ -978,12 +977,8 @@
 
   @media (max-width: 560px) {
     nav { padding: 0 0.85rem; }
-    .nav-brand { font-size: 0.92rem; letter-spacing: -0.02em; }
-    .nav-brand .mark {
-      width: 30px; height: 30px; line-height: 30px;
-      font-size: 0.82rem;
-      margin-right: 0.45rem;
-    }
+    .nav-brand .mark { width: 36px; height: 36px; font-size: 0.92rem; margin-right: 0.5rem; border-radius: 7px; }
+    .nav-brand .brand-text { font-size: 0.88rem; }
     #nav-services { display: none; }
     .nav-links { gap: 0.1rem; }
     .nav-links a { padding: 0.4rem 0.45rem; font-size: 0.6rem; letter-spacing: 0.03em; }
@@ -1005,8 +1000,7 @@
 
 <nav>
   <a href="#" class="nav-brand" onclick="showPage('services'); return false;">
-    <span class="mark">N1</span><span class="brand-text">Number 1 Handyman</span>
-    <small>Painting · Repairs · Jacksonville FL</small>
+    <span class="mark">N1</span><span class="brand-text">Number 1<br>Handyman</span>
   </a>
   <ul class="nav-links">
     <li><a href="#" id="nav-contact" onclick="showPage('contact'); return false;">Contact</a></li>
