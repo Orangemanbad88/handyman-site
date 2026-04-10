@@ -318,6 +318,10 @@
     margin: 0 auto;
     padding: 5rem 2.5rem;
   }
+  .section.section-tight {
+    padding-top: 3rem;
+    padding-bottom: 3.5rem;
+  }
 
   .section-eyebrow {
     display: inline-flex;
@@ -516,8 +520,8 @@
     position: relative;
   }
   /* Dark-band overrides for headings + sub text */
-  .services-inner h2 { color: #ffffff; }
-  .services-inner .section-sub { color: rgba(255,255,255,0.78); }
+  .services-inner h2 { color: var(--gold-light); }
+  .services-inner .section-sub { color: rgba(255,255,255,0.82); }
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -922,7 +926,9 @@
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 880px) {
     nav { padding: 0 1.25rem; }
-    .nav-brand small { font-size: 0.6rem; }
+    .nav-brand { font-size: 1rem; }
+    .nav-brand small { display: none; }
+    .nav-brand .mark { width: 28px; height: 28px; line-height: 28px; font-size: 0.78rem; margin-right: 0.5rem; }
     .nav-cta { display: none; }
     .nav-links a { padding: 0.5rem 0.7rem; font-size: 0.72rem; }
 
@@ -956,6 +962,15 @@
     .cta-inner { justify-content: center; }
   }
 
+  @media (max-width: 560px) {
+    nav { padding: 0 1rem; }
+    .nav-brand { font-size: 0.92rem; }
+    .nav-brand .brand-text { display: none; }
+    .nav-brand .mark { margin-right: 0; }
+    .nav-links { gap: 0.1rem; }
+    .nav-links a { padding: 0.45rem 0.55rem; font-size: 0.68rem; letter-spacing: 0.05em; }
+  }
+
   @media (max-width: 480px) {
     .hero-actions { width: 100%; }
     .hero-actions .btn { width: 100%; justify-content: center; }
@@ -966,7 +981,7 @@
 
 <nav>
   <a href="#" class="nav-brand" onclick="showPage('services'); return false;">
-    <span class="mark">N1</span>Number 1 Handyman
+    <span class="mark">N1</span><span class="brand-text">Number 1 Handyman</span>
     <small>Painting · Repairs · Jacksonville FL</small>
   </a>
   <ul class="nav-links">
@@ -1016,8 +1031,7 @@
   </section>
 
   <!-- WORK GALLERY -->
-  <section class="section">
-    <p class="section-eyebrow">Recent Work</p>
+  <section class="section section-tight">
     <h2>Real jobs.<br>Real homes.</h2>
     <p class="section-sub">A handful of recent projects across Jacksonville. Painting, flooring, exterior work — every job done with care.</p>
 
@@ -1074,7 +1088,6 @@
   <!-- SERVICES -->
   <section class="services-band">
     <div class="services-inner">
-    <p class="section-eyebrow">What We Do</p>
     <h2>Services Offered</h2>
     <p class="section-sub">No job too small. From a single repair to a full room refresh — we handle it.</p>
 
