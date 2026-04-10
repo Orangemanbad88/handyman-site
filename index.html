@@ -87,29 +87,26 @@
     color: var(--navy-deep);
     font-family: var(--slab);
     font-weight: 800;
-    width: 56px;
-    height: 56px;
-    font-size: 1.4rem;
+    width: 52px;
+    height: 52px;
+    font-size: 1.28rem;
     text-align: center;
-    border-radius: 9px;
-    margin-right: 0.75rem;
+    border-radius: 8px;
+    margin-right: 0.7rem;
     flex-shrink: 0;
-    box-shadow:
-      0 2px 12px rgba(202,138,4,0.55),
-      0 0 22px rgba(234,179,8,0.35),
-      inset 0 1px 0 rgba(255,255,255,0.32);
+    box-shadow: 0 2px 12px rgba(202,138,4,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   }
 
   .nav-brand .brand-text {
     display: inline-block;
     font-family: var(--slab);
-    font-size: 1.55rem;
+    font-size: 1.42rem;
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.02em;
     text-shadow:
-      0 0 22px rgba(234,179,8,0.32),
-      0 0 8px rgba(255,255,255,0.18),
+      0 0 18px rgba(234,179,8,0.4),
+      0 0 6px rgba(255,255,255,0.2),
       0 1px 2px rgba(0,0,0,0.4);
   }
 
@@ -947,8 +944,8 @@
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 880px) {
     nav { padding: 0 1.25rem; }
-    .nav-brand .mark { width: 46px; height: 46px; font-size: 1.15rem; margin-right: 0.6rem; }
-    .nav-brand .brand-text { font-size: 1.2rem; }
+    .nav-brand .mark { width: 44px; height: 44px; font-size: 1.08rem; margin-right: 0.55rem; }
+    .nav-brand .brand-text { font-size: 1.12rem; }
     .nav-links a { padding: 0.5rem 0.7rem; font-size: 0.72rem; }
     .nav-cta { padding: 0.55rem 0.95rem !important; font-size: 0.7rem !important; margin-left: 0.25rem; }
 
@@ -984,14 +981,14 @@
 
   @media (max-width: 560px) {
     nav { padding: 0 0.7rem; }
-    .nav-brand .mark { width: 38px; height: 38px; font-size: 0.95rem; margin-right: 0.45rem; border-radius: 7px; }
-    .nav-brand .brand-text { font-size: 0.92rem; }
+    .nav-brand .mark { width: 36px; height: 36px; font-size: 0.9rem; margin-right: 0.4rem; border-radius: 7px; }
+    .nav-brand .brand-text { font-size: 0.86rem; }
     .nav-links { gap: 0.05rem; }
-    .nav-links a { padding: 0.4rem 0.4rem; font-size: 0.58rem; letter-spacing: 0.03em; }
-    .nav-cta { padding: 0.45rem 0.6rem !important; font-size: 0.58rem !important; gap: 0.25rem; }
+    .nav-links a { padding: 0.4rem 0.38rem; font-size: 0.56rem; letter-spacing: 0.03em; }
+    .nav-cta { padding: 0.45rem 0.55rem !important; font-size: 0.56rem !important; gap: 0.25rem; }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 360px) {
     .nav-brand .brand-text { display: none; }
     .nav-brand .mark { margin-right: 0; }
   }
